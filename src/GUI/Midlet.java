@@ -23,8 +23,10 @@ public class Midlet extends MIDlet {
         display = Display.getDisplay(this);
         formAuthentification = new Authentification("Covoiturage - Authentification");
        // display.setCurrent(new CovoitureurConnecteList("Test", List.IMPLICIT).lst);
-     display.setCurrent(new SaisieCovoiturage(this, null)); //hussein7
+    // display.setCurrent(new SaisieCovoiturage(this, null)); //hussein7
       //  display.setCurrent(new FormContact().list); // wejd
+       // display.setCurrent(new statistiquesForm(7)); JOE stats
+        display.setCurrent(new notificationForm(1));
     }
 
     public static Display getDisplay() {
