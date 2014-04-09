@@ -15,7 +15,7 @@ import Handlers.CovoiturageHandler;
  *
  * @author Nizar
  */
-public class AfficherDetailsForm extends Form implements CommandListener, Runnable {
+public class CovoituragesRecents extends Form implements CommandListener, Runnable {
     
     public Displayable displayable;
     public MIDlet midlet;
@@ -31,7 +31,7 @@ public class AfficherDetailsForm extends Form implements CommandListener, Runnab
     public StringBuffer stringBuffer = new StringBuffer();
     public int choix;
 
-    public AfficherDetailsForm(MIDlet midlet, Displayable displayable) {
+    public CovoituragesRecents(MIDlet midlet, Displayable displayable) {
         super("Nizar");
         this.midlet = midlet;
         this.displayable = displayable;
@@ -86,7 +86,7 @@ public class AfficherDetailsForm extends Form implements CommandListener, Runnab
                     covoiturages = covoituragesHandler.getCovoiturage();
                     if (covoiturages.length > 0) {
                         for (int i = 0; i < covoiturages.length; i++) {
-                            list.append("Le " + String.valueOf(covoiturages[i].getDateDepart()) + " de " + covoiturages[i].getGouvernoratDepart() + "," + covoiturages[i].getDelegationDepart() + "," + covoiturages[i].getLocaliteDepart() + " à " + covoiturages[i].getGouvernoratArrivee() + "," + covoiturages[i].getDelegationArrivee() + "," + covoiturages[i].getLocaliteArrivee(), image);
+                            list.append("Le " + String.valueOf(covoiturages[i].getDateDepart()) + " de " + covoiturages[i].getGouvernoratDepart() + "," + covoiturages[i].getDelegationDepart() + "," + covoiturages[i].getLocaliteDepart() + " à " + covoiturages[i].getGouvernoratArrivee() + "," + covoiturages[i].getDelegationArrivee() + "," + covoiturages[i].getLocaliteArrivee() + ".", image);
                         }
                     }
                 } catch (Exception e) {
@@ -168,6 +168,9 @@ public class AfficherDetailsForm extends Form implements CommandListener, Runnab
                     th.start();
                     try {
                         th.join();
+                        infoCovoiturageForm.deleteAll();
+                        infoCovoiturageForm.removeCommand(cmdReserver);
+                        infoCovoiturageForm.append("Votre demande de réservation a été ajoutée avec succés !");
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }

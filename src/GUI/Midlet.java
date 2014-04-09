@@ -21,7 +21,7 @@ public class Midlet extends MIDlet {
     public void startApp() {
         display = Display.getDisplay(this);
         formAuthentification = new Authentification("Covoiturage - Authentification");
-        display.setCurrent(formAuthentification);
+        display.setCurrent(new SplashScreen(this));
     }
 
     public static Display getDisplay() {

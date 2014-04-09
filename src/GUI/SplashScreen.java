@@ -12,7 +12,7 @@ import javax.microedition.media.Manager;
 import javax.microedition.media.Player;
 import javax.microedition.media.PlayerListener;
 
-public class SplashScreen extends Canvas implements Runnable, PlayerListener {
+public class SplashScreen extends Canvas implements Runnable {
 
     private Player player = null;
     private Image mImage;
@@ -55,7 +55,7 @@ public class SplashScreen extends Canvas implements Runnable, PlayerListener {
      */
     public void dismiss() {
         if (isShown()) {
-            Midlet.getDisplay().setCurrent(new AfficherDetailsForm(projectMIDlet, this).accueilForm);
+            Midlet.getDisplay().setCurrent(new CovoituragesRecents(projectMIDlet, this).accueilForm);
         }
     }
 
@@ -66,21 +66,14 @@ public class SplashScreen extends Canvas implements Runnable, PlayerListener {
         try {
             //Play the sound
             player = Manager.createPlayer(getClass().getResourceAsStream("/bmw.wav"), "audio/x-wav");
-            player.addPlayerListener(this);
-            player.setLoopCount(-1);
-            player.prefetch();
-            player.realize();
+            player.setLoopCount(1);
             player.start();
-            Thread.sleep(5000);//set for 5 seconds
-            player.stop();
+            Thread.sleep(1500);//set for 5 seconds
+            player.close();
         } catch (Exception e) {
             System.out.println("Exception : " + e);
         }
         dismiss();
-    }
-
-    public void playerUpdate(Player player, String event, Object eventData) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     /**
      * A key release event triggers the dismiss() method to be called.
