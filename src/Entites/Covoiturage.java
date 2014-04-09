@@ -35,6 +35,27 @@ public class Covoiturage {
     private Vector _detours; //Table détours
     private Vector _participants; //Table participants
     private Vector _reservateurs; //Table réservations
+    
+    //hussein
+    private Ville _villeDepart; //id_ville_depart
+    private Ville _villeArrivee; //id_ville_arrivee
+
+    public void setVilleDepart(Ville _villeDepart) {
+        this._villeDepart = _villeDepart;
+    }
+
+    public void setVilleArrivee(Ville _villeArrivee) {
+        this._villeArrivee = _villeArrivee;
+    }
+
+    public Ville getVilleDepart() {
+        return _villeDepart;
+    }
+
+    public Ville getVilleArrivee() {
+        return _villeArrivee;
+    }
+    
 
     public int getIdCreateur() {
         return _idCreateur;

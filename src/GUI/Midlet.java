@@ -21,7 +21,8 @@ public class Midlet extends MIDlet {
     public void startApp() {
         display = Display.getDisplay(this);
         formAuthentification = new Authentification("Covoiturage - Authentification");
-        display.setCurrent(new CovoitureurConnecteList("Test", List.IMPLICIT).lst);
+       // display.setCurrent(new CovoitureurConnecteList("Test", List.IMPLICIT).lst);
+      display.setCurrent(new SaisieCovoiturage(this, null)); //hussein
     }
 
     public static Display getDisplay() {
