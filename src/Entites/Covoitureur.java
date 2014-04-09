@@ -29,6 +29,33 @@ public class Covoitureur {
     private String facebook;
     private String date_derniere_visite;
     private String cle_activation;
+    private double _latitude;
+    private double _longitude;
+    private boolean _connecte;
+
+    public double getLatitude() {
+        return _latitude;
+    }
+
+    public double getLongitude() {
+        return _longitude;
+    }
+
+    public boolean isConnecte() {
+        return _connecte;
+    }
+
+    public void setLatitude(double _latitude) {
+        this._latitude = _latitude;
+    }
+
+    public void setLongitude(double _longitude) {
+        this._longitude = _longitude;
+    }
+
+    public void setConnecte(boolean _connecte) {
+        this._connecte = _connecte;
+    }
 
     public int getId() {
         return id;

@@ -17,7 +17,6 @@ import org.xml.sax.helpers.DefaultHandler;
 public class CovoitureurHandler extends DefaultHandler {
 
     private Vector covoitureurs;
-
     String idTag = "close";
     String id_facebookTag = "close";
     String emailTag = "close";
@@ -36,6 +35,9 @@ public class CovoitureurHandler extends DefaultHandler {
     String facebookTag = "close";
     String date_derniere_visiteTag = "close";
     String cle_activationTag = "close";
+    String latitudeTag = "close";
+    String longitudeTag = "close";
+    String connecteTag = "close";
 
     public CovoitureurHandler() {
         covoitureurs = new Vector();
@@ -46,7 +48,6 @@ public class CovoitureurHandler extends DefaultHandler {
         covoitureurs.copyInto(listeCovoitureurs);
         return listeCovoitureurs;
     }
-
     private Covoitureur currentCovoitureur;
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -93,6 +94,12 @@ public class CovoitureurHandler extends DefaultHandler {
             date_derniere_visiteTag = "open";
         } else if (qName.equals("cle_activation")) {
             cle_activationTag = "open";
+        } else if (qName.equals("latitude")) {
+            latitudeTag = "open";
+        } else if (qName.equals("longitude")) {
+            longitudeTag = "open";
+        } else if (qName.equals("connecte")) {
+            connecteTag = "open";
         }
     }
 
@@ -138,6 +145,12 @@ public class CovoitureurHandler extends DefaultHandler {
             date_derniere_visiteTag = "close";
         } else if (qName.equals("cle_activation")) {
             cle_activationTag = "close";
+        } else if (qName.equals("latitude")) {
+            latitudeTag = "close";
+        } else if (qName.equals("longitude")) {
+            longitudeTag = "close";
+        } else if (qName.equals("connecte")) {
+            connecteTag = "close";
         }
     }
 
@@ -216,8 +229,21 @@ public class CovoitureurHandler extends DefaultHandler {
                 String cle_activation = new String(ch, start, length).trim();
                 currentCovoitureur.setCle_activation(cle_activation);
                 System.out.println("********************" + currentCovoitureur.getCle_activation());
+            } else if (latitudeTag.equals("open")) {
+                String latitude = new String(ch, start, length).trim();
+                System.out.println(latitude);
+                currentCovoitureur.setLatitude(Double.parseDouble(latitude));
+            } else if (longitudeTag.equals("open")) {
+                String longitude = new String(ch, start, length).trim();
+                currentCovoitureur.setLongitude(Double.parseDouble(longitude));
+            } else if (connecteTag.equals("open")) {
+                String connecte = new String(ch, start, length).trim();
+                if (connecte.equals("1")) {
+                    currentCovoitureur.setConnecte(true);
+                } else {
+                    currentCovoitureur.setConnecte(false);
+                }
             }
         }
     }
-
 }

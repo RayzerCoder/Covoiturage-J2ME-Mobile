@@ -33,7 +33,7 @@ public class Authentification extends Form implements CommandListener, Runnable 
 
     List lst = new List("Covoitureurs", List.IMPLICIT);
 
-    String basicURL = "http://localhost/covoituragej2me/";
+    String basicURL = "http://localhost/covoiturage/";
 
     Covoitureur covoitureurConnecte = Midlet.covoitureurConnecte;
 

@@ -21,7 +21,7 @@ public class Midlet extends MIDlet {
     public void startApp() {
         display = Display.getDisplay(this);
         formAuthentification = new Authentification("Covoiturage - Authentification");
-        display.setCurrent(new SplashScreen(this));
+        display.setCurrent(new CovoitureurConnecteList("Test", List.IMPLICIT).lst);
     }
 
     public static Display getDisplay() {
