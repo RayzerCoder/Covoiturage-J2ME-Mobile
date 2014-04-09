@@ -6,6 +6,7 @@
 package GUI;
 
 import Entites.Covoitureur;
+import javax.microedition.io.ConnectionNotFoundException;
 import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 
@@ -22,7 +23,8 @@ public class Midlet extends MIDlet {
         display = Display.getDisplay(this);
         formAuthentification = new Authentification("Covoiturage - Authentification");
        // display.setCurrent(new CovoitureurConnecteList("Test", List.IMPLICIT).lst);
-      display.setCurrent(new SaisieCovoiturage(this, null)); //hussein
+     display.setCurrent(new SaisieCovoiturage(this, null)); //hussein7
+      //  display.setCurrent(new FormContact().list); // wejd
     }
 
     public static Display getDisplay() {
@@ -33,5 +35,13 @@ public class Midlet extends MIDlet {
     }
 
     public void destroyApp(boolean unconditional) {
+        
+    }
+     public void callme(String number) {
+        try {
+            platformRequest("tel:" + number);
+        } catch (ConnectionNotFoundException ex) {
+            System.out.println("    no connection found ");
+        }
     }
 }

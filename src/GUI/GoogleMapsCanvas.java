@@ -121,5 +121,9 @@ public class GoogleMapsCanvas extends Canvas implements GoogleStaticMapHandler, 
         } else if (c == zoomOutCommand) {
             map.zoomOut();
         }
+        if ( c==cmdParse){
+    Midlet.getDisplay().setCurrent(new FormContact().list);
+    }
+             
     }
 }
